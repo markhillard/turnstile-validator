@@ -1,14 +1,29 @@
+// modules
 const express = require("express");
 const axios = require("axios");
 const app = express();
 app.use(express.json());
 
+// environment variables
+const secretKey = process.env.TURNSTILE_SECRET;
+const port = process.env.PORT || 3000;
+
+// cors headers
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept",
+  );
+  next();
+});
+
+// health check
 app.get("/health", (req, res) => {
   res.status(200).send("OK");
 });
 
-const secretKey = process.env.TURNSTILE_SECRET;
-
+// process turnstile verification
 app.post("/", async (req, res) => {
   const { token } = req.body;
   
@@ -54,7 +69,7 @@ app.post("/", async (req, res) => {
   }
 });
 
-const port = process.env.PORT || 3000;
+// listen for connection
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
