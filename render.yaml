@@ -8,7 +8,7 @@ services:
     branch: master
     buildCommand: npm install
     startCommand: node server.js
-    healthCheckPath: /
+    healthCheckPath: /health
     envVars:
       - key: PORT
         sync: false
