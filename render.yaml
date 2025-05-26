@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: turnstile-validator
+    runtime: node
+    plan: free
+    region: ohio
+    repo: https://github.com/markhillard/turnstile-validator.git
+    branch: master
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /
+    envVars:
+      - key: PORT
+        sync: false
+      - key: TURNSTILE_SECRET
+        sync: false

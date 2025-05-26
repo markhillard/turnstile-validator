@@ -1,0 +1,23 @@
+{
+  "name": "turnstile-validator",
+  "version": "1.0.0",
+  "description": "🕶️ Express server for Cloudflare Turnstile validation",
+  "license": "ISC",
+  "repository": {
+      "type": "git",
+      "url": "git://github.com/markhillard/turnstile-validator.git"
+  },
+  "author": "Mark Hillard",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "axios": "^1.9.0",
+    "express": "^5.1.0"
+  },
+  "engines": {
+      "node": "^22.16.0"
+  }
+}
