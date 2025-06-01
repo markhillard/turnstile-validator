@@ -36,13 +36,13 @@ app.post('/', async (req, res) => {
   try {
     const response = await axios.post(
       'https://challenges.cloudflare.com/turnstile/v0/siteverify',
-      new URLSearchParams({
+      {
         secret: secretKey,
         response: token
-      }),
+      },
       {
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json',
         }
       }
     );
